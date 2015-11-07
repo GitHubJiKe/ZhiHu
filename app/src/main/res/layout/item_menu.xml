@@ -26,8 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:id="@+id/imageView"
-            android:src="@drawable/ic_menu_follow"/>
+            android:id="@+id/imageView"/>
     </RelativeLayout>
 
 

@@ -6,14 +6,18 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ypf.zhihu.R;
+import com.ypf.zhihu.adapter.ListPopupWindowAdapter;
 import com.ypf.zhihu.adapter.MyRecycleViewAdapter;
 import com.ypf.zhihu.adapter.MyViewPagerAdapter;
 import com.ypf.zhihu.view.MySlidingMenu;
@@ -26,7 +30,11 @@ public class MainActivity extends Activity {
     ViewPager vp;
     MySlidingMenu slidingMenu;
     TextView tv1;
+    TextView tv2;
     RecyclerView rlv;
+    private ArrayList<String> mArrayList=new ArrayList<>();
+    private ListPopupWindow mListPopupWindow;
+    private ListPopupWindowAdapter mListPopupWindowAdapter;
     List<String> data=new ArrayList<>();
     //图片数组
     private int imgs[]={
@@ -42,6 +50,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.content_main);
         //初始化View
         setViews();
+        //初始化PopMenu
+        setPopMenu();
         //设置RecycleView各个参数
         setRecycleView();
         //创建MyRecycleViewAdapter对象
@@ -50,6 +60,29 @@ public class MainActivity extends Activity {
         rlv.setAdapter(rlvAdapter);
         //设置Viewpager和Adapter
         setViewPager();
+    }
+
+    private void setPopMenu() {
+        mListPopupWindow=new ListPopupWindow(this);
+        //自定义Adapter
+        mListPopupWindowAdapter=new ListPopupWindowAdapter(mArrayList, this);
+        mListPopupWindow.setAdapter(mListPopupWindowAdapter);
+        mListPopupWindow.setWidth(200);
+        mListPopupWindow.setHeight(ActionBar.LayoutParams.WRAP_CONTENT);
+        mListPopupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
+                Toast.makeText(MainActivity.this, "点击了"+mArrayList.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+        tv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //指定anchor
+                mListPopupWindow.setAnchorView(v);
+                mListPopupWindow.show();
+            }
+        });
     }
 
     private void setViewPager() {
@@ -123,6 +156,7 @@ public class MainActivity extends Activity {
                 slidingMenu.showMenu();
             }
         });
+        tv2= (TextView) findViewById(R.id.tv2);
         vp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,5 +170,7 @@ public class MainActivity extends Activity {
         data.add("news one");
         data.add("news two");
         data.add("news three");
+        mArrayList.add("夜间模式");
+        mArrayList.add("设置选项");
     }
 }
