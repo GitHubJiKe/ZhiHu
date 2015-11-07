@@ -42,6 +42,7 @@ public class WelcomeActivity extends Activity {
         protected void onPostExecute(String s) {
             Intent intent=new Intent(WelcomeActivity.this,MainActivity.class);
             startActivity(intent);
+            finish();
             super.onPostExecute(s);
         }
         /**

@@ -52,7 +52,7 @@ public class MyListViewAdapter extends BaseAdapter {
         }
         holder= (ViewHolder) convertView.getTag();
         holder.tv.setText(data.get(position));
-        holder.iv.setBackgroundResource(R.drawable.ic_menu_follow);
+//        holder.iv.setBackgroundResource(R.drawable.ic_menu_follow);
         View.OnClickListener l=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
