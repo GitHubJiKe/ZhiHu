@@ -60,6 +60,22 @@ public class MainActivity extends Activity {
         rlv.setAdapter(rlvAdapter);
         //设置Viewpager和Adapter
         setViewPager();
+        //新起一个线程不停地轮播ViewPager中的图片
+        Thread thread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int length=data.size();
+                int item=0;
+                if (item!=length){
+                    vp.setCurrentItem(item);
+                }else{
+                    item=0;
+                }
+                item++;
+
+            }
+        });
+        thread.start();
     }
 
     private void setPopMenu() {
@@ -161,7 +177,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //点击ViewPager的相应事件
-                Toast.makeText(MainActivity.this, "zhihu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "知乎", Toast.LENGTH_SHORT).show();
             }
         });
     }
