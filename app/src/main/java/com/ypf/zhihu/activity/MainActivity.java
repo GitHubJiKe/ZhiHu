@@ -21,7 +21,7 @@ import com.ypf.zhihu.view.MySlidingMenu;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity {
 
     ViewPager vp;
     MySlidingMenu slidingMenu;
@@ -116,25 +116,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
         vp= (ViewPager) findViewById(R.id.vp1);
         slidingMenu=new MySlidingMenu(this);
         tv1= (TextView) findViewById(R.id.tv1);
+        tv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //显示侧滑菜单
+                slidingMenu.showMenu();
+            }
+        });
+        vp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点击ViewPager的相应事件
+                Toast.makeText(MainActivity.this, "zhihu", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initData() {
         data.add("news one");
         data.add("news two");
         data.add("news three");
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.tv1:
-                //显示侧滑菜单
-                slidingMenu.showMenu();
-                break;
-            case R.id.vp1:
-                //点击ViewPager的相应事件
-                Toast.makeText(MainActivity.this, "zhihu", Toast.LENGTH_SHORT).show();
-                break;
-        }
     }
 }
