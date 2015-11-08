@@ -1,6 +1,7 @@
 package com.ypf.zhihu.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -112,8 +113,9 @@ public class MainActivity extends Activity {
         rlvAdapter.setOnItemClickLitener(new MyRecycleViewAdapter.onItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(MainActivity.this, position + " click",
-                        Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(MainActivity.this,ContentActivity.class);
+                //intent.putExtra("content","新闻内容");
+                startActivity(intent);
             }
 
             @Override
