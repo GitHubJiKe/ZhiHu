@@ -20,15 +20,19 @@
 * ListPopUpWindow实现弹出式菜单（夜间模式和日间模式可以通过自定义属性和主题实现，但是由于设备问题和时间原因没有实现）
 * SlidingMenu实现侧滑菜单，菜单内部通过ListView显示不同的新闻主题，和原版不同的是，原版的侧滑菜单是可以整体上下滑动的，而我实现的相对简单只是新闻主题的滑动，上方的Title保持固定
 * 用户头像通过自定义ImageCircleView实现（比着原版大了一些，个人觉得原版的用户头像太小了，看着不太清晰）
+* AsyncHttpClient访问网络请求数据，fast-json解析返回的数据
 
 **使用的Jar包和Library：**
 
 * commons-views-1.0.0.jar:ImageCircleView jar包
 * SlidingMenuLibrary: 侧滑菜单Library
+* fast-json:Json解析
+* android-async-http-1.4.8.jar：异步请求网络
+* commons-codec-1.6.jar、commons-logging-1.1.1.jar、fluent-hc-4.2.5.jar、httpclient-4.2.5.jar、httpclient-cache-4.2.5.jar、httpcore-4.2.4.jar、httpmime-4.2.5.jar：辅助 android-async-http-1.4.8.jar
 
 #总结
 
-* 大部分模仿原版的《知乎日报》，有些许的改动
+* 大部分布局模仿原版的《知乎日报》，有些许的改动
 * 自己对知识的掌握不够系统，零零碎碎的东西一到用的时候就无法信手拈来，还要查阅资料
 
 
