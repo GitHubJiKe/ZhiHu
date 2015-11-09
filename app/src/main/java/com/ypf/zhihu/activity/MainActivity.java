@@ -190,6 +190,13 @@ public class MainActivity extends Activity {
     }
 
     private void initData() {
+        //联网获得数据
+//        String url="http://www.baidu.com";
+//        try {
+//            HttpGetData.getData(url);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         data.add("news one");
         data.add("news two");
         data.add("news three");
